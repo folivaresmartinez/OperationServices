@@ -1,7 +1,5 @@
 package demo.olivares.infrastructure.controller.operation;
 
-import demo.olivares.application.service.operation.useCase.SubstractService;
-import demo.olivares.application.service.operation.useCase.SumService;
 import io.corp.calculator.TracerImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -18,9 +16,6 @@ import javax.ws.rs.QueryParam;
 @RequestMapping("/api/operation/v1")
 public class OperationController {
 
-    private final SumService sumService;
-
-    private final SubstractService substractService;
 
     private final TracerImpl tracerUtil;
 
@@ -38,7 +33,7 @@ public class OperationController {
 
         tracerUtil.trace("executing add operation. firstvalue: " + firstvalue + " secondvalue: " + secondvalue);
 
-        return ResponseEntity.status(HttpStatus.OK).body(sumService.execute(firstvalue, secondvalue));
+        return ResponseEntity.status(HttpStatus.OK).body("ok");
     }
 
     @GetMapping(value = "/substract")
@@ -47,6 +42,6 @@ public class OperationController {
 
         tracerUtil.trace("executing subtract operation. firstvalue: " + firstvalue + " secondvalue: " + secondvalue);
 
-        return ResponseEntity.status(HttpStatus.OK).body(substractService.execute(firstvalue, secondvalue));
+        return ResponseEntity.status(HttpStatus.OK).body("ok");
     }
 }
