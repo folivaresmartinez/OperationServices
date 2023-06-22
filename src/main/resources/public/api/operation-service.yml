@@ -1,0 +1,79 @@
+openapi: 3.0.0
+
+servers:
+  - url: "/api/operation/v1"
+
+info:
+  version: v1
+  title: operationService - API
+  description: |-
+
+    This API offers endpoints for operation
+
+  contact:
+    name: Fernando Olivares
+
+paths:
+  /sum:
+    get:
+      summary: Addition Operation
+      description: |-
+        sum
+      parameters:
+        - name: firstvalue
+          in: query
+          description: First Operator Value
+          required: true
+          schema:
+            type: string
+            example: 123
+        - name: secondvalue
+          in: query
+          description: Second Operator Value
+          required: true
+          schema:
+            type: string
+            example: 55
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: number
+        "500":
+          $ref: "#/components/responses/serverError"
+
+  /substract:
+    get:
+      summary: Subtraction Operation
+      description: |-
+        substract
+      parameters:
+        - name: firstvalue
+          in: query
+          description: First Operator Value
+          required: true
+          schema:
+            type: string
+            example: 123
+        - name: secondvalue
+          in: query
+          description: Second Operator Value
+          required: true
+          schema:
+            type: string
+            example: 55
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: number
+        "500":
+          $ref: "#/components/responses/serverError"
+components:
+  responses:
+    serverError:
+      description: Error de servidor
